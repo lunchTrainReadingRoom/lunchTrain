@@ -17,8 +17,8 @@
    */
   angular
     .module('boilerplate', [
-      'ngRoute'
-    ])
+    'ngRoute'
+  ])
     .config(config);
 
   // safe dependency injection
@@ -39,25 +39,30 @@
     // routes
     $routeProvider
       .when('/', {
-        templateUrl: 'views/home.html',
-        controller: 'MainController',
-        controllerAs: 'main'
-      })
+      templateUrl: 'views/home.html',
+      controller: 'MainController',
+      controllerAs: 'main'
+    })
       .when('/contact', {
-        templateUrl: 'views/contact.html',
-        controller: 'MainController',
-        controllerAs: 'main'
-      })
+      templateUrl: 'views/contact.html',
+      controller: 'MainController',
+      controllerAs: 'main'
+    })
       .when('/setup', {
-        templateUrl: 'views/setup.html',
-        controller: 'MainController',
-        controllerAs: 'main'
-      })
+      templateUrl: 'views/setup.html',
+      controller: 'MainController',
+      controllerAs: 'main'
+    })
       .otherwise({
-        redirectTo: '/'
-      });
+      redirectTo: '/'
+    });
 
     $httpProvider.interceptors.push('authInterceptor');
+    $httpProvider.defaults.useXDomain = true;
+    $httpProvider.defaults.withCredentials = false;
+    delete $httpProvider.defaults.headers.common["X-Requested-With"];
+    $httpProvider.defaults.headers.common["Accept"] = "application/json";
+    $httpProvider.defaults.headers.common["Content-Type"] = "application/json";
 
   }
 
