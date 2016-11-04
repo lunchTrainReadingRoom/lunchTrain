@@ -25,14 +25,7 @@
     $scope.trains = [];
     $scope.addContact = function(cond, dest, time, notes) {
 
-      $scope.trains.push({
-        conductor: cond,
-        destination: dest,
-        time: time,
-        notes: notes
-      });
-
-      QueryService.query('POST', '/train/add', {
+      QueryService.query('POST', 'train/add', {
         conductor: cond,
         destination: dest,
         time: time,
