@@ -5,19 +5,36 @@
  * or you can have separate controllers for each logical section
  * 
  */
-;(function() {
+;
+(function () {
 
   angular
     .module('boilerplate')
     .controller('MainController', MainController);
 
-  MainController.$inject = ['LocalStorage', 'QueryService'];
+  MainController.$inject = ['LocalStorage', 'QueryService', '$scope'];
 
 
-  function MainController(LocalStorage, QueryService) {
+  function MainController(LocalStorage, QueryService, $scope) {
 
     // 'controller as' syntax
     var self = this;
+    
+    $scope.train = {};
+
+    $scope.trains = [];
+    $scope.addContact = function(cond, dest, time) {
+      
+      $scope.trains.push({
+        conductor: cond,
+        destination: dest,
+        time: time
+      });
+      console.log($scope.trains);
+
+    };
+
+
 
 
     ////////////  function definitions
@@ -27,10 +44,10 @@
      * Load some data
      * @return {Object} Returned object
      */
-    // QueryService.query('GET', 'posts', {}, {})
-    //   .then(function(ovocie) {
-    //     self.ovocie = ovocie.data;
-    //   });
+     QueryService.query('GET', 'posts', {}, {})
+       .then(function(res) {
+         self.res = res.data;
+       });
   }
 
 
