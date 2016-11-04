@@ -1,46 +1,49 @@
-<h2 class="text-center">Reading Room Lunch Train</h2>
+<h1 class="text-center">Reading Room Lunch Train</h1>
 
 
 <div class="text-center">
-  <small>Find out where everyone's eating</small>
+  <p>Find out where everyone's eating</p>
+</div>
+
+<table class="table">
+  <th>
+    <tr scope="row">
+      <th>Conductor</th>
+      <th>Destination</th>
+      <th>Time</th>
+    </tr>
+    <tr ng-repeat="train in trains track by $index" scope="row">
+      <td>{{train.conductor}}</td>
+      <td>{{train.destination}}</td>
+      <td>{{train.time}}</td>
+    </tr>
+</table>
+
+<div class="container">
+  <div class="jumbotron">
+    <h1>Can't find what you're looking for?</h1> 
+    <p>Add a train to the chew crew!</p> 
+  </div>
 </div>
 
 <div class="row">
-    <form ng-submit="addContact(train.cond, train.dest, train.time)">
-      <div class="col-md-12 form-group">
-        <label for="name">Conductor:</label>
-        <input class="form-control" type="text" name="name" ng-model="train.cond">
-      </div>
-      <div class="col-md-12 form-group">
-        <label for="dest">Dest:</label>
-        <input class="form-control" type="text" name="dest" ng-model="train.dest">
-      </div>
-      <div class="col-md-12 form-group">  
-        <label for="Time">Time:</label>
-        <input class="form-control" type="time" name="time" ng-model="train.time">
-      </div>
-      <div class="col-md-12 form-group">  
-        <label for="Time">Notes:</label>
-        <input class="form-control" type="text" name="time" ng-model="train.notes">
-      </div>
-      <div class="col-md-3">
-        <input class="btn btn-primary" type="submit" value="Add Train">
-      </div>
-    </form>
-  </div>
-  <table class="table">
-    <th>
-      <tr scope="row">
-        <th>Conductor</th>
-        <th>Destination</th>
-        <th>Time</th>
-        <th>Notes</th>
-      </tr>
-      <tr ng-repeat="train in trains track by $index" scope="row">
-        <td>{{train.conductor}}</td>
-        <td>{{train.dest}}</td>
-        <td>{{train.time}}</td>
-        <td>{{train.notes}}</td>
-      </tr>
-  </table>
+  <form ng-submit="addContact(train.cond, train.dest, train.time)">
+    <div class="col-md-12 form-group">
+      <label for="name">Conductor:</label>
+      <input class="form-control" type="text" name="name" ng-model="train.cond">
+    </div>
+    <div class="col-md-12 form-group">
+      <label for="dest">Dest:</label>
+      <input class="form-control" type="text" name="dest" ng-model="train.dest">
+    </div>
+    <div class="col-md-12 form-group">  
+      <label for="Time">Time:</label>
+      <input class="form-control" type="time" name="time" ng-model="train.time">
+    </div>
+    <div class="col-md-3">
+      <input class="btn btn-primary" type="submit" value="Add Train">
+    </div>
+  </form>
+</div>
+
 

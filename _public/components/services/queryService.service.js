@@ -74,6 +74,7 @@
         }
         deferred.resolve(data);
       }, function(error) {
+        console.log(error);
         deferred.reject(error);
       });
 

@@ -7,14 +7,15 @@ var db = mongoose.connect('mongodb://lunchTrain:readingroom@ds143717.mlab.com:43
 var Train = require('../models/train');
 
 router.all('/add', function(req, res, next) {
-
-	// create a new user	
+  // create a new user	
 	var train = new Train({
-	  conductor: req.body.conductor,
-	  destination: req.body.destination,
-	  time: req.body.time,
-	  notes: req.body.notes
+	  conductor: req.query.conductor,
+	  destination: req.query.destination,
+	  time: req.query.time,
+	  notes: req.query.notes
 	});
+  
+
 	// call the built-in save method to save to the database
 	train.save(function(err) {
 	  if (err) throw err;

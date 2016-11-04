@@ -23,19 +23,45 @@
     $scope.train = {};
 
     $scope.trains = [];
-    $scope.addContact = function(cond, dest, time, notes) {
 
+    function getData(postGet) {
+      console.log("running");
+      QueryService.query('GET', 'train/getAll', {}, {})
+        .then(function(res) {
+        console.log(res);
+        $scope.res = res.data;
+        for (var i = 0; i < $scope.res.length; i++) {
+
+          $scope.trains.push($scope.res[i]);
+          console.log($scope.res[i]);
+        }
+        if (postGet === true) {
+          console.log("fbeiubfwe");
+          $scope.$digest();
+        }
+
+      });
+    }
+    getData();
+
+    $scope.addContact = function(cond, dest, time, notes) {
+      console.log("hello");
       QueryService.query('POST', 'train/add', {
         conductor: cond,
         destination: dest,
         time: time,
-        notes: notes
-      }, {})
+      })
         .then(function(res) {
+        
+        console.log("running get Data");
+        
         self.res = res.data;
+        
       });
+      
+      $scope.trains = [];
 
-      console.log($scope.trains);
+      getData(true);
 
     };
 
