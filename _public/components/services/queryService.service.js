@@ -68,6 +68,7 @@
         params: params,
         data: data
       }).then(function(data) {
+        console.log(method);
         if (!data.config) {
           console.log('Server error occured.');
         }
