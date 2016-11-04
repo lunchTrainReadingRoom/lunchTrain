@@ -19,17 +19,29 @@
 
     // 'controller as' syntax
     var self = this;
-    
+
     $scope.train = {};
 
     $scope.trains = [];
-    $scope.addContact = function(cond, dest, time) {
-      
+    $scope.addContact = function(cond, dest, time, notes) {
+
       $scope.trains.push({
         conductor: cond,
         destination: dest,
-        time: time
+        time: time,
+        notes: notes
       });
+
+      QueryService.query('POST', '/train/add', {
+        conductor: cond,
+        destination: dest,
+        time: time,
+        notes: notes
+      }, {})
+        .then(function(res) {
+        self.res = res.data;
+      });
+
       console.log($scope.trains);
 
     };
@@ -44,10 +56,10 @@
      * Load some data
      * @return {Object} Returned object
      */
-     QueryService.query('GET', 'posts', {}, {})
-       .then(function(res) {
-         self.res = res.data;
-       });
+
+    //    function query(method, url, params, data)
+
+
   }
 
 

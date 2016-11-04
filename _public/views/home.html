@@ -17,7 +17,11 @@
       </div>
       <div class="col-md-12 form-group">  
         <label for="Time">Time:</label>
-        <input class="form-control" type="text" name="time" ng-model="train.time">
+        <input class="form-control" type="time" name="time" ng-model="train.time">
+      </div>
+      <div class="col-md-12 form-group">  
+        <label for="Time">Time:</label>
+        <textarea class="form-control" type="text" name="time" ng-model="train.notes"></textarea>
       </div>
       <div class="col-md-3">
         <input class="btn btn-primary" type="submit" value="Add Train">
@@ -30,11 +34,13 @@
         <th>Conductor</th>
         <th>Destination</th>
         <th>Time</th>
+        <th>Notes</th>
       </tr>
       <tr ng-repeat="train in trains track by $index" scope="row">
         <td>{{train.conductor}}</td>
         <td>{{train.dest}}</td>
         <td>{{train.time}}</td>
+        <td>{{train.notes}}</td>
       </tr>
   </table>
 
