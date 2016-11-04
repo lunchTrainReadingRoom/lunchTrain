@@ -7,8 +7,13 @@ var db = mongoose.connect('mongodb://lunchTrain:readingroom@ds143717.mlab.com:43
 var Train = require('../models/train');
 
 
+<<<<<<< .mine
 router.all('/add', function(req, res, next) {
   console.log(req);
+=======
+router.all('/add', function(req, res, next) {
+
+>>>>>>> .theirs
 	// create a new user	
 	var train = new Train({
 	  conductor: req.body.conductor,
