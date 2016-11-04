@@ -7,7 +7,7 @@ var db = mongoose.connect('mongodb://lunchTrain:readingroom@ds143717.mlab.com:43
 var Train = require('../models/train');
 
 
-router.get('/add', function(req, res, next) {
+router.post('/add', function(req, res, next) {
 	// create a new user	
 	var train = new Train({
 	  conductor: req.body.conductor,
